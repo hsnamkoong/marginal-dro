@@ -10,6 +10,10 @@ The release consists of two files that each contain the distributionally robust 
 
 For any questions or issues, please contact Tatsunori Hashimoto (thashim@stanford.edu)
           
+## Usage
+The easiest way to use this code is to use  `LipLoss` in `dual_lip_risk_bound`. This implements the smoothness-constrained DRO. `radius` is the smoothness constraint (L/epsilon), `x_in` is the input features used to define smoothness constraints, `b_init` is the initial dual variable value (can be set to zero). 
+
+Given an instance of LipLoss, one can then compute the DRO loss by passing per-example `losses` into the `forward` method, with a value for the dual variable `eta`. There are also wrappers for optimizing `eta` against a particular DRO uncertainty set (`rho`) but you can also treat `eta` directly as a hyperparameter if there is no particular setting of `rho` that is of interest. 
           
 # License 
 Copyright (C) 2022 Tatsunori Hashimoto
